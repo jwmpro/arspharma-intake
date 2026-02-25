@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&family=Heebo:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-white text-gray-900;
+    font-family: 'Assistant', 'Heebo', system-ui, sans-serif;
+  }
+
+  /* Better RTL support */
+  [dir="rtl"] input,
+  [dir="rtl"] textarea {
+    text-align: right;
+  }
+
+  [dir="rtl"] input[dir="ltr"],
+  [dir="rtl"] textarea[dir="ltr"] {
+    text-align: left;
+  }
+
+  /* OTP code input boxes - force center alignment regardless of RTL */
+  input.otp-input {
+    text-align: center !important;
+    caret-color: #002FA7;
+  }
+
+  /* Custom checkbox styling */
+  input[type="checkbox"] {
+    @apply rounded border-neffy-300 text-neffy-500;
+  }
+  input[type="checkbox"]:focus {
+    @apply ring-neffy-400 ring-offset-0;
+  }
+
+  /* Better focus styles for inputs */
+  input:focus,
+  textarea:focus {
+    outline: none;
+  }
+}
+
+@layer utilities {
+  /* Smooth screen transitions */
+  .animate-fadeIn {
+    animation: fadeIn 0.35s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Hide scrollbar for gallery */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Custom scrollbar for consent screens */
+  .scroll-smooth::-webkit-scrollbar {
+    width: 6px;
+  }
+  .scroll-smooth::-webkit-scrollbar-track {
+    @apply bg-neffy-50 rounded-full;
+  }
+  .scroll-smooth::-webkit-scrollbar-thumb {
+    @apply bg-neffy-300 rounded-full;
+  }
+  .scroll-smooth::-webkit-scrollbar-thumb:hover {
+    @apply bg-neffy-400;
+  }
+}
+
+/* Stripe Elements custom overrides */
+.StripeElement {
+  @apply border-2 border-neffy-200 rounded-xl p-4 bg-white;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.StripeElement--focus {
+  @apply border-neffy-500 shadow-sm;
+}
+.StripeElement--invalid {
+  @apply border-red-400;
+}
+
+/* Smooth page transitions */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(0, 47, 167, 0.15);
+}
